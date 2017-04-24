@@ -151,6 +151,41 @@ public class Solution {
 		return R;
 	}
 
+	/*
+	 * 463
+	 */
+	public int islandPerimeter(int[][] M) {
+		int n = M.length;
+		int m = M[0].length;
+		int islands = 0;
+		int connections = 0; 
+		for (int i = 0, state = 0; i < n; ++i) {
+			boolean hasIslandInThisRow = false;
+			for (int j = 0; j < m; ++j) {
+				if (M[i][j] == 1) {
+					++islands;
+					if (j > 0 && M[i][j-1] == 1) {
+						++connections;
+					}
+					if (i > 0 && M[i-1][j] == 1) {
+						++connections;
+					}
+					hasIslandInThisRow = true;
+				}
+			}
+			
+			// this is a little speed up, no need to examine next rows.
+			if (hasIslandInThisRow) {
+				state = 1;
+			} else {
+				if (state == 1) {
+					break;
+				}
+			}
+		}
+		return islands * 4 - connections * 2;
+	}
+
 	// -------------------------------------------------
 	// helper
 	// -------------------------------------------------
@@ -336,7 +371,6 @@ public class Solution {
 	// -------------------------------------------------
 	// argument parser
 	// -------------------------------------------------
-	
 
 	// -------------------------------------------------
 	// test
@@ -381,6 +415,11 @@ public class Solution {
 	public void testNextGreaterElement() {
 		assertArrayEquals(nextGreaterElement(new int[] { 4, 1, 2 }, new int[] { 1, 3, 4, 2 }), new int[] { -1, 3, -1 });
 		assertArrayEquals(nextGreaterElement(new int[] { 2, 4 }, new int[] { 1, 2, 3, 4 }), new int[] { 3, -1 });
+	}
+	
+	@Test
+	public void testIslandPerimeter() {
+		assertEquals(16, islandPerimeter(Parameter.from("[[0,1,0,0],  [1,1,1,0],  [0,1,0,0],  [1,1,0,0]]").toMatrix()));
 	}
 
 }
