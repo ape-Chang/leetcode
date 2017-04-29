@@ -158,22 +158,22 @@ public class Solution {
 		int n = M.length;
 		int m = M[0].length;
 		int islands = 0;
-		int connections = 0; 
+		int connections = 0;
 		for (int i = 0, state = 0; i < n; ++i) {
 			boolean hasIslandInThisRow = false;
 			for (int j = 0; j < m; ++j) {
 				if (M[i][j] == 1) {
 					++islands;
-					if (j > 0 && M[i][j-1] == 1) {
+					if (j > 0 && M[i][j - 1] == 1) {
 						++connections;
 					}
-					if (i > 0 && M[i-1][j] == 1) {
+					if (i > 0 && M[i - 1][j] == 1) {
 						++connections;
 					}
 					hasIslandInThisRow = true;
 				}
 			}
-			
+
 			// this is a little speed up, no need to examine next rows.
 			if (hasIslandInThisRow) {
 				state = 1;
@@ -184,6 +184,62 @@ public class Solution {
 			}
 		}
 		return islands * 4 - connections * 2;
+	}
+
+	/*
+	 * 520
+	 */
+	public boolean detectCapitalUse(String word) {
+		int n = word.length();
+		if (n <= 1) {
+			return true;
+		}
+
+		boolean firstCapital = Character.isUpperCase(word.charAt(0));
+		boolean secondCapital = Character.isUpperCase(word.charAt(1));
+		if (firstCapital && secondCapital) {
+			for (int i = 2; i < n; ++i) {
+				if (Character.isLowerCase(word.charAt(i))) {
+					return false;
+				}
+			}
+			return true;
+		}
+
+		if (firstCapital && !secondCapital || (!firstCapital && !secondCapital)) {
+			for (int i = 2; i < n; ++i) {
+				if (Character.isUpperCase(word.charAt(i))) {
+					return false;
+				}
+			}
+			return true;
+		}
+
+		return false;
+	}
+
+	public boolean detectCapitalUse1(String word) {
+		int capitals = 0, n = word.length();
+		for (int i = 0; i < n; ++i) {
+			capitals += (Character.isUpperCase(word.charAt(i)) ? 1 : 0);
+		}
+		return capitals == 0 || capitals == n || (capitals == 1 && Character.isUpperCase(word.charAt(0)));
+	}
+
+	/*
+	 * 485
+	 */
+	public int findMaxConsecutiveOnes(int[] nums) {
+		int max = 0, consecutives = 0;
+		for (int i = 0, n = nums.length; i < n; ++i) {
+			if (nums[i] == 1) {
+				consecutives++;
+			} else {
+				max = Math.max(max, consecutives);
+				consecutives = 0;
+			}
+		}
+		return Math.max(max, consecutives);
 	}
 
 	// -------------------------------------------------
@@ -416,10 +472,27 @@ public class Solution {
 		assertArrayEquals(nextGreaterElement(new int[] { 4, 1, 2 }, new int[] { 1, 3, 4, 2 }), new int[] { -1, 3, -1 });
 		assertArrayEquals(nextGreaterElement(new int[] { 2, 4 }, new int[] { 1, 2, 3, 4 }), new int[] { 3, -1 });
 	}
-	
+
 	@Test
 	public void testIslandPerimeter() {
 		assertEquals(16, islandPerimeter(Parameter.from("[[0,1,0,0],  [1,1,1,0],  [0,1,0,0],  [1,1,0,0]]").toMatrix()));
+	}
+
+	@Test
+	public void testDetectCapitalUse() {
+		assertEquals(true, detectCapitalUse("USA"));
+		assertEquals(false, detectCapitalUse("FlaG"));
+		assertEquals(true, detectCapitalUse("hello"));
+		assertEquals(false, detectCapitalUse("mL"));
+		assertEquals(true, detectCapitalUse1("USA"));
+		assertEquals(false, detectCapitalUse1("FlaG"));
+		assertEquals(true, detectCapitalUse1("hello"));
+		assertEquals(false, detectCapitalUse1("mL"));
+	}
+	
+	@Test
+	public void testFindMaxConsecutiveOnes() {
+		assertEquals(3, findMaxConsecutiveOnes(new int[] {1,1,0,1,1,1}));
 	}
 
 }
