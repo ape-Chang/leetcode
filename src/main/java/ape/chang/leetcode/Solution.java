@@ -242,6 +242,60 @@ public class Solution {
 		return Math.max(max, consecutives);
 	}
 
+	/*
+	 * 448
+	 */
+	public List<Integer> findDisappearedNumbers(int[] nums) {
+		for (int i = 0; i < nums.length; ++i) {
+			int index = Math.abs(nums[i]) - 1;
+			if (nums[index] > 0) {
+				nums[index] = -nums[index];
+			}
+		}
+
+		List<Integer> ret = new ArrayList<Integer>();
+		for (int i = 0; i < nums.length; ++i) {
+			if (nums[i] > 0) {
+				ret.add(i + 1);
+			}
+		}
+
+		return ret;
+	}
+
+	/*
+	 * 389
+	 */
+	public char findTheDifference(String s, String t) {
+		int[] counts = new int[26];
+		for (char c : s.toCharArray()) {
+			counts[c - 'a']++;
+		}
+		for (char c : t.toCharArray()) {
+			counts[c - 'a']--;
+		}
+		for (int i = 0; i < counts.length; ++i) {
+			if (counts[i] == -1) {
+				return (char) ('a' + i);
+			}
+		}
+		return 'A';
+	}
+
+	/*
+	 * 371
+	 */
+	public int getSum(int a, int b) {
+		int s = a, c = b;
+		do {
+			a = s;
+			b = c;
+			s = a ^ b;
+			c = (a & b) << 1;
+		} while (c != 0);
+		return s;
+	}
+
 	// -------------------------------------------------
 	// helper
 	// -------------------------------------------------
@@ -489,10 +543,20 @@ public class Solution {
 		assertEquals(true, detectCapitalUse1("hello"));
 		assertEquals(false, detectCapitalUse1("mL"));
 	}
-	
+
 	@Test
 	public void testFindMaxConsecutiveOnes() {
-		assertEquals(3, findMaxConsecutiveOnes(new int[] {1,1,0,1,1,1}));
+		assertEquals(3, findMaxConsecutiveOnes(new int[] { 1, 1, 0, 1, 1, 1 }));
+	}
+
+	@Test
+	public void testFindTheDifference() {
+		assertEquals('e', findTheDifference("abdc", "abcde"));
+	}
+	
+	@Test
+	public void testGetSum() {
+		assertEquals(3, getSum(1, 2));
 	}
 
 }

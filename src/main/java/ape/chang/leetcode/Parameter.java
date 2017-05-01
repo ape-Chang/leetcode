@@ -17,6 +17,25 @@ public class Parameter {
 	public static Parameter from(String literal) {
 		return new Parameter(literal);
 	}
+	
+	public static int[] asArray(int... numbers) {
+		return numbers;
+	}
+	
+	public static int[][] asMatrix(int rows, int... elements) {
+		int columns = elements.length / rows;
+		int[][] matrix = new int[rows][columns];
+		for (int i = 0, p = 0; i < rows; ++i) {
+			for (int j = 0; j < columns; ++j, ++p) {
+				matrix[i][j] = elements[p];
+			}
+		}
+		return matrix;
+	}
+	
+	public int[] toArray() {
+		return null;
+	}
 
 	public int[][] toMatrix() {
 		skipWhiteSpace();
