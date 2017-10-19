@@ -1,4 +1,4 @@
-package ape.chang.leetcode;
+package ape.chang.misc;
 
 public class BinarySearchInMatrix {
 	
