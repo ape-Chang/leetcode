@@ -1,7 +1,7 @@
 blocked:
 678
 in-progress:
-621, 698, 688
+621, 698, 688, 673
 wait-to-submit:
 
 no-obvious-solution:
