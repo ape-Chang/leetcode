@@ -16,6 +16,7 @@ public class P673 {
 		assertThat(solution.findNumberOfLIS(new int[] {}), equalTo(0));
 		assertThat(solution.findNumberOfLIS(new int[] {1,2,4,3,5,4,7,2}), equalTo(3));
 		assertThat(solution.findNumberOfLIS(new int[] {3, 1, 2}), equalTo(1));
+		assertThat(solution.findNumberOfLIS(new int[] {1, 3, 2}), equalTo(2));
 	}
 	
 	class Solution {
@@ -25,35 +26,38 @@ public class P673 {
 	    		return 0;
 	    	}
 	    	
-	    	int max = 1, count = 0;
-	    	
 	    	Node[] dp = new Node[n];
 	    	for (int i = 0; i < n; ++i) {
 	    		dp[i] = new Node();
 	    	}
 	    	
-	    	dp[0].length = 1; 
-	    	dp[0].pathes = 1;
+	    	int max = 1, count = 1;
 	    	for (int i = 1; i < n; ++i) {
 	    		for (int j = 0; j < i; ++j) {
 	    			if (nums[i] > nums[j]) {
-	    				dp[i].length = Math.max(dp[j].length + 1, dp[i].length);
-	    				if (dp[i].length > max) {
-	    					max = dp[i].length;
-	    					count = dp[i].pathes = dp[j].pathes;
-	    				} else if (dp[i].length == max) {
+	    				if (dp[j].length + 1 > dp[i].length) {
+	    					dp[i].length = dp[j].length + 1;
+	    					dp[i].pathes = dp[j].pathes;
+	    				} else if (dp[j].length + 1 == dp[i].length) {
 	    					dp[i].pathes += dp[j].pathes;
-	    					count += dp[j].pathes;
 	    				}
 	    			}
 	    		}
+	    		
+	    		if (dp[i].length > max) {
+	    			max = dp[i].length;
+	    			count = dp[i].pathes;
+	    		} else if (dp[i].length == max) {
+	    			count += dp[i].pathes;
+	    		}
 	    	}
-	        return max == 1 ? n : count;
+	    	
+	    	return count;
 	    }
 	    
 	    class Node {
-	    	int length;
-	    	int pathes;
+	    	int length = 1;
+	    	int pathes = 1;
 	    }
 	}
 
