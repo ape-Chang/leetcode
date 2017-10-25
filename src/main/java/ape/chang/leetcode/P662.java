@@ -8,16 +8,16 @@ import java.util.List;
 
 import org.junit.Test;
 
-public class P662 extends TestParameterParseSupport {
+public class P662 {
 	
 	Solution solution = new Solution();
 	
 	@Test
 	public void test() {
-		assertThat(solution.widthOfBinaryTree(parse("(1, (3, (5, (), ()), (3, (), ())), (2, (), (9, (), ())))")), equalTo(4));
-		assertThat(solution.widthOfBinaryTree(parse("(1, (3, (5, (), ()), (3, (), ())), ())")), equalTo(2));
-		assertThat(solution.widthOfBinaryTree(parse("(1, (3, (5, (), ()), ()), (2, (), ()))")), equalTo(2));
-		assertThat(solution.widthOfBinaryTree(parse("(1, (3, (5, (6, (), ()), ()), ()), (2, (), (9, (), (7, (), ()))))")), equalTo(8));
+		assertThat(solution.widthOfBinaryTree(Parsers.parseTree("(1, (3, (5, (), ()), (3, (), ())), (2, (), (9, (), ())))")), equalTo(4));
+		assertThat(solution.widthOfBinaryTree(Parsers.parseTree("(1, (3, (5, (), ()), (3, (), ())), ())")), equalTo(2));
+		assertThat(solution.widthOfBinaryTree(Parsers.parseTree("(1, (3, (5, (), ()), ()), (2, (), ()))")), equalTo(2));
+		assertThat(solution.widthOfBinaryTree(Parsers.parseTree("(1, (3, (5, (6, (), ()), ()), ()), (2, (), (9, (), (7, (), ()))))")), equalTo(8));
 	}
 
 	

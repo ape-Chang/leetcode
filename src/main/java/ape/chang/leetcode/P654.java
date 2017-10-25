@@ -5,16 +5,15 @@ import static org.junit.Assert.assertThat;
 
 import java.util.Arrays;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
-public class P654 extends TestParameterParseSupport {
+public class P654 {
 	
 	Solution solution = new Solution();
 	
 	@Test
 	public void test() {
-		assertThat(solution.constructMaximumBinaryTree(new int[] {3,2,1,6,0,5}), equalTo(parse("(6, (3, (), (2, (), (1, (), ()))), (5, (0, (), ()), ()))")));
+		assertThat(solution.constructMaximumBinaryTree(new int[] {3,2,1,6,0,5}), equalTo(Parsers.parseTree("(6, (3, (), (2, (), (1, (), ()))), (5, (0, (), ()), ()))")));
 	}
 	
 	@Test

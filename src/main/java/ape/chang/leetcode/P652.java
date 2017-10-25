@@ -13,14 +13,14 @@ import java.util.Set;
 
 import org.junit.Test;
 
-public class P652 extends TestParameterParseSupport {
+public class P652 {
 	
 	Solution solution = new Solution();
 	
 	@Test
 	public void test() {
-		assertThat(solution.findDuplicateSubtrees(parse("(1, (2, (4, (), ()), ()), (3, (2, (4, (), ()), ()), (4, (), ())))")), 
-				equalTo(asList(parse("(4, (), ())"), parse("(2, (4, (), ()), ())"))));
+		assertThat(solution.findDuplicateSubtrees(Parsers.parseTree("(1, (2, (4, (), ()), ()), (3, (2, (4, (), ()), ()), (4, (), ())))")), 
+				equalTo(asList(Parsers.parseTree("(4, (), ())"), Parsers.parseTree("(2, (4, (), ()), ())"))));
 	}
 	
 	class Solution {

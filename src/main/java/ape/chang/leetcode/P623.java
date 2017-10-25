@@ -8,17 +8,17 @@ import java.util.List;
 
 import org.junit.Test;
 
-public class P623 extends TestParameterParseSupport {
+public class P623 {
 	
 	Solution solution = new Solution();
 	
 	@Test
 	public void test() {
-		assertThat(solution.addOneRow(parse("(4, (2, (3, (), ()), (1, (), ())), (6, (5, (), ()), ()))"), 1, 2),
-				equalTo(parse("(4, (1, (2, (3, (), ()), (1, (), ())), ()), (1, (), (6, (5, (), ()), ())))")));
+		assertThat(solution.addOneRow(Parsers.parseTree("(4, (2, (3, (), ()), (1, (), ())), (6, (5, (), ()), ()))"), 1, 2),
+				equalTo(Parsers.parseTree(("(4, (1, (2, (3, (), ()), (1, (), ())), ()), (1, (), (6, (5, (), ()), ())))"))));
 		
-		assertThat(solution.addOneRow(parse("(4, (2, (3, (), ()), (1, (), ())), ())"), 1, 3),
-				equalTo(parse("(4, (2, (1, (3, (), ()), ()), (1, (), (1, (), ()))), ())")));
+		assertThat(solution.addOneRow(Parsers.parseTree("(4, (2, (3, (), ()), (1, (), ())), ())"), 1, 3),
+				equalTo(Parsers.parseTree("(4, (2, (1, (3, (), ()), ()), (1, (), (1, (), ()))), ())")));
 	}
 	
 	class Solution {

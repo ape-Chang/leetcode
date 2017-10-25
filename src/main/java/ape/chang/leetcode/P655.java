@@ -11,24 +11,24 @@ import java.util.Queue;
 
 import org.junit.Test;
 
-public class P655 extends TestParameterParseSupport {
+public class P655 {
 	
 	Solution solution = new Solution();
 	
 	@Test
 	public void test() {
-		assertThat(solution.printTree(parse("(1, (2, (), ()), ())")), equalTo(
+		assertThat(solution.printTree(Parsers.parseTree("(1, (2, (), ()), ())")), equalTo(
 				asList(
 					asList("", "1", ""),
 					asList("2", "", ""))));
 		
-		assertThat(solution.printTree(parse("(1, (2, (), (4, (), ())), (3, (), ()))")), equalTo(
+		assertThat(solution.printTree(Parsers.parseTree("(1, (2, (), (4, (), ())), (3, (), ()))")), equalTo(
 				asList(
 					asList("", "", "", "1", "", "", ""),
 					asList("", "2", "", "", "", "3", ""),
 					asList("", "", "4", "", "", "", ""))));
 		
-		assertThat(solution.printTree(parse("(1, (2, (3, (4, (), ()), ()), ()), (5, (), ()))")), equalTo(
+		assertThat(solution.printTree(Parsers.parseTree("(1, (2, (3, (4, (), ()), ()), ()), (5, (), ()))")), equalTo(
 				asList(
 					asList("",  "",  "", "",  "", "", "", "1", "",  "",  "",  "",  "", "", ""),
 					asList("",  "",  "", "2", "", "", "", "",  "",  "",  "",  "5", "", "", ""),
