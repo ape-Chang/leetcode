@@ -92,6 +92,14 @@ public class P659 {
 	    		++b[i-min];
 	    	}
 	    	
+	    	for (int i : b) {
+	    		m = Math.min(m, i);
+	    	}
+	    	
+	    	for (int i = 0; i < b.length; ++i) {
+	    		b[i] -= m;
+	    	}
+	    	
 	    	return b;
 	    }
 	}
