@@ -9,7 +9,7 @@ public class IntStack {
 	
 	// The API
 	
-	void push(int x) {
+	public void push(int x) {
 		int k = size++;
 		if (size == stack.length) {
 			expand();
@@ -17,15 +17,19 @@ public class IntStack {
 		stack[k] = x;
 	}
 	
-	int pop() {
+	public int pop() {
 		if (size == 0) {
 			throw new EmptyCollectionException();
 		}
 		return stack[--size];
 	}
 	
-	int top() {
+	public int top() {
 		return stack[size-1];
+	}
+	
+	public boolean isEmpty() {
+		return size == 0;
 	}
 	
 	// The implementation
