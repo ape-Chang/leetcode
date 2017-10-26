@@ -1,5 +1,7 @@
 package ape.chang.leetcode;
 
+import ape.chang.primitives.IntStack;
+
 public class P496 {
 	
 	class Solution {
@@ -8,10 +10,10 @@ public class P496 {
 			IntStack stack = new IntStack();
 			IntIntMap next = new IntIntMap();
 			for (int b : B) {
-				if (stack.empty() || stack.top() >= b) {
+				if (stack.isEmpty() || stack.top() >= b) {
 					stack.push(b);
 				} else {
-					while (!stack.empty() && stack.top() < b) {
+					while (!stack.isEmpty() && stack.top() < b) {
 						next.put(stack.pop(), b);
 					}
 					stack.push(b);
@@ -22,38 +24,6 @@ public class P496 {
 				R[i] = next.getOrDefault(A[i], -1);
 			}
 			return R;
-		}
-		
-		class IntStack {
-			private int[] stack = new int[64];
-			private int p = -1;
-
-			public IntStack() {
-			}
-
-			public void push(int x) {
-				stack[++p] = x;
-				if (p == stack.length) {
-					// expand
-					int[] newStack = new int[stack.length * 2];
-					System.arraycopy(stack, 0, newStack, 0, stack.length);
-					stack = newStack;
-				}
-			}
-
-			public int top() {
-				// ignore bound check
-				return stack[p];
-			}
-
-			public int pop() {
-				// ignore bound check
-				return stack[p--];
-			}
-
-			public boolean empty() {
-				return p < 0;
-			}
 		}
 
 		/*
