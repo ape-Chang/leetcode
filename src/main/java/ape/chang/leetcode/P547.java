@@ -78,6 +78,7 @@ public class P547 {
 	    			}
 	    		}
 	    	}
+	    	
 	    	IntSet s = new IntSet();
 	    	for (int i = 0; i < n; ++i) {
 	    		s.add(ds.find(i));

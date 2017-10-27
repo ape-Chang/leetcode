@@ -23,7 +23,7 @@ public class IntDisjointSet {
 			throw new IllegalArgumentException();
 		}
 		
-		parent[x] = find(y);
+		parent[find(x)] = find(y);
 	}
 	
 	public int find(int x) {
@@ -36,6 +36,16 @@ public class IntDisjointSet {
 			parent[x] = find(parent[x]);
 		}
 		return parent[x];
+	}
+	
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < parent.length; ++i) {
+			sb.append(find(i)).append(",");
+		}
+		sb.deleteCharAt(sb.length() - 1);
+		return sb.toString();
 	}
 
 }

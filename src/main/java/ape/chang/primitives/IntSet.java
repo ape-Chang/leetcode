@@ -1,10 +1,5 @@
 package ape.chang.primitives;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.junit.Assert.assertThat;
-
-import org.junit.Test;
-
 public class IntSet {
 
 	// The API
@@ -48,6 +43,19 @@ public class IntSet {
 	public boolean isEmpty() {
 		return size() == 0;
 	}
+	
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("[");
+		for (int i = 0; i < slots.length; ++i) {
+			if (slots[i] != NOT_A_KEY) {				
+				sb.append(slots[i]).append(",");
+			}
+		}
+		sb.deleteCharAt(sb.length() - 1);
+		return sb.toString();
+	}
 
 	// The Implementation
 
@@ -87,6 +95,8 @@ public class IntSet {
 		}
 
 		slots = newSlots;
+		// ---------------
+		mask = (mask << 1) + 1;
 		
 		for (int x : t) {
 			if (x != NOT_A_KEY) {
@@ -94,12 +104,10 @@ public class IntSet {
 			}
 		}
 
-		// ---------------
-		mask = (mask << 1) + 1;
 	}
 
 	int hash(int x) {
-		return (x * 0x32124533) & mask;
+		return (x * 0x1989 + 0x0806) & mask;
 	}
 
 	int[] slots;
@@ -109,25 +117,4 @@ public class IntSet {
 
 	static final int NOT_A_KEY = Integer.MAX_VALUE;
 	
-	// The test
-	
-	@Test
-	public void test() {
-		IntSet set = new IntSet();
-		assertThat(set.isEmpty(), equalTo(true));
-		for (int i = 0; i < 32; ++i) {
-			set.add(i);
-			assertThat(set.isEmpty(), equalTo(false));
-			assertThat(set.size(), equalTo(i+1));
-			assertThat(set.contains(i), equalTo(true));
-		}
-		for (int i = 0; i < 32; ++i) {
-			set.add(i);
-			assertThat(set.size(), equalTo(32));
-		}
-		for (int i = 0; i < 32; ++i) {
-			set.remove(i);
-		}
-	}
-
 }
