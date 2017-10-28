@@ -89,6 +89,10 @@ public class IntList {
 		return size;
 	}
 	
+	public boolean isEmpty() {
+		return size() == 0;
+	}
+	
 	public IntList clone() {
 		IntList list = new IntList();
 		list.list = Arrays.copyOf(this.list, this.list.length);
