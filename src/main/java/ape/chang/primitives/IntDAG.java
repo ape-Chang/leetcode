@@ -1,5 +1,7 @@
 package ape.chang.primitives;
 
+import ape.chang.misc.Util;
+
 public class IntDAG {
 	// 
 	class Node {
@@ -7,15 +9,33 @@ public class IntDAG {
 		IntList nextAdjecent = new IntList();
 		int outDegree;
 		IntList prevAdjecent = new IntList();
+		int label;
+		
+		public Node(int label) {
+			this.label = label;
+		}
 		
 		void addNext(int to) {
-			++inDegree;
+			++outDegree;
 			nextAdjecent.add(to);
 		}
 		
 		void addPrev(int from) {
-			++outDegree;
+			++inDegree;
 			prevAdjecent.add(from);
+		}
+		
+		@Override
+		public String toString() {
+			StringBuilder sb = new StringBuilder().append("[");
+			if (!prevAdjecent.isEmpty()) {
+				sb.append(prevAdjecent).append("->");
+			}
+			sb.append(label);
+			if (!nextAdjecent.isEmpty()) {
+				sb.append("->").append(nextAdjecent);
+			}
+			return sb.append("]").toString();
 		}
 	}
 	
@@ -24,7 +44,7 @@ public class IntDAG {
 	public IntDAG(int n) {
 		nodes = new Node[n];
 		for (int i = 0; i < n; ++i) {
-			nodes[i] = new Node();
+			nodes[i] = new Node(i);
 		}
 	}
 	
@@ -78,7 +98,7 @@ public class IntDAG {
 	public int maxDistance() {
 		int n = nodes.length;
 		int[] dist = new int[n];
-		for (int i = 1; i < n; ++i) {
+		for (int i = 0; i < n; ++i) {
 			dist[i] = 1;
 		}
 		int max = 0;
@@ -86,7 +106,7 @@ public class IntDAG {
 			IntList adj = nodes[i].prevAdjecent;
 			if (!adj.isEmpty()) {
 				for (int j = 0; j < adj.size(); ++j) {
-					dist[i] = Math.max(dist[i], dist[adj.get(j)]);
+					dist[i] = Math.max(dist[i], dist[adj.get(j)] + 1);
 				}
 			}
 			max = Math.max(max, dist[i]);
@@ -98,19 +118,7 @@ public class IntDAG {
 	
 	@Override
 	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append("{");
-		if (nodes.length > 0) {
-			sb.append("\n");
-			for (int i = 0; i < nodes.length; ++i) {
-				sb.append("\t");
-				sb.append(i).append("->");
-				sb.append(nodes[i].nextAdjecent);
-				sb.append("\n");
-			}
-		}
-		sb.append("}");
-		return sb.toString();
+		return new StringBuilder().append("{").append(Util.join(nodes)).append("}").toString();
 	}
 	
 }

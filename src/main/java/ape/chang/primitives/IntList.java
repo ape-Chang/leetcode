@@ -110,14 +110,14 @@ public class IntList {
 
 	@Override
 	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append("[");
-		for (int i = 0; i < size; ++i) {
-			sb.append(list[i]).append(",");
+		StringBuilder sb = new StringBuilder().append("[");
+		if (size > 0) {
+			sb.append(list[0]);
+			for (int i = 1; i < size; ++i) {
+				sb.append(",").append(list[i]);
+			}
 		}
-		sb.deleteCharAt(sb.length() - 1);
-		sb.append("]");
-		return sb.toString();
+		return sb.append("]").toString();
 	}
 
 	@Override

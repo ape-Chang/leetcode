@@ -44,16 +44,53 @@ public class IntQueue {
 	
 	@Override
 	public String toString() {
-		return null;
+		StringBuilder sb = new StringBuilder();
+		sb.append("[");
+		if (size > 0) {			
+			for (int p = head, i = 0; i < size; ++i) {
+				sb.append(queue[p++]).append(",");
+				if (p == queue.length) {
+					p = 0;
+				}
+			}
+			sb.deleteCharAt(sb.length()-1);
+		}
+		sb.append("]");
+		return sb.toString();
 	}
 	
 	@Override
 	public boolean equals(Object o) {
-		return false;
+		if (o == null || !(o instanceof IntQueue)) {
+			return false;
+		}
+		IntQueue q = (IntQueue) o;
+		if (size != q.size) {
+			return false;
+		}
+		for (int i = 0, j = head, k = q.head; i < size; ++i) {
+			if (queue[j++] != q.queue[k++]) {
+				return false;
+			}
+			if (j == queue.length) {
+				j = 0;
+			}
+			if (k == q.queue.length) {
+				k = 0;
+			}
+		}
+		return true;
 	}
 	
 	@Override
 	public int hashCode() {
+		int h = 0;
+		for (int p = head, i = 0; i < size; ++i) {
+			h += Integer.hashCode(queue[p++]);
+			if (p == queue.length) {
+				p = 0;
+			}
+		}
 		return 0;
 	}
 	
