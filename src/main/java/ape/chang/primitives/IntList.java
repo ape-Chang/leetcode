@@ -155,6 +155,7 @@ public class IntList {
 	void expand() {
 		int[] newList = new int[(list.length << 1)];
 		System.arraycopy(list, 0, newList, 0, size);
+		list = newList;
 	}
 
 }

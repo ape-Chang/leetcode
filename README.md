@@ -6,3 +6,4 @@ Besides the solution, I also add some extra flavor, mostly the implementation of
 513: BFS
 491: DP
 646: Graph, DAG, longest path
+494: knapsack problem
