@@ -1,5 +1,9 @@
 package ape.chang.primitives;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class IntList {
 
 	// The API
@@ -84,6 +88,21 @@ public class IntList {
 	public int size() {
 		return size;
 	}
+	
+	public IntList clone() {
+		IntList list = new IntList();
+		list.list = Arrays.copyOf(this.list, this.list.length);
+		list.size = this.size;
+		return list;
+	}
+	
+	public List<Integer> asList() {
+		List<Integer> list = new ArrayList<Integer>(size);
+		for (int i = 0; i < size; ++i) {
+			list.add(this.list[i]);
+		}
+		return list;
+	}
 
 	@Override
 	public String toString() {
@@ -102,13 +121,27 @@ public class IntList {
 		if (o == null || !(o instanceof IntList)) {
 			return false;
 		}
+		
 		IntList l = (IntList) o;
+		if (size != l.size) {
+			return false;
+		}
+		
 		for (int i = 0; i < size; ++i) {
 			if (get(i) != l.get(i)) {
 				return false;
 			}
 		}
 		return true;
+	}
+	
+	@Override
+	public int hashCode() {
+		int hash = 0;
+		for (int i = 0; i < size; ++i) {
+			hash += Integer.hashCode(list[i]);
+		}
+		return hash;
 	}
 	// The implementation
 
