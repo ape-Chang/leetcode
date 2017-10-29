@@ -10,5 +10,20 @@ Besides the solution, I also add some extra flavor, mostly the implementation of
 287: linked list, fast slow pointer.
 289: simulation
 300: DP 
-## Notes
-SQL: 262
+## Todo List
+Id  | Thoughts
+--- | -------
+215 | Partition
+207 | Topology sort
+210 | Topology sort
+297 | Parse
+295 | 
+233 |
+494 | Knapsack
+486 | Math
+313 | 
+688 | Math
+698 | Bin packing
+621 | 
+659 |
+678 | 

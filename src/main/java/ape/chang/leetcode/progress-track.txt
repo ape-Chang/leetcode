@@ -1,7 +1,0 @@
-blocked:
-678, 659
-in-progress:
-621, 698, 688, 313, 486, 494, 286, 295, 297
-wait-to-submit:
-
-no-obvious-solution:
