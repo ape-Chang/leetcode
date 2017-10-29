@@ -8,6 +8,7 @@ Besides the solution, I also add some extra flavor, mostly the implementation of
 646: Graph, DAG, longest path
 494: knapsack problem
 287: linked list, fast slow pointer.
-289: simulation 
+289: simulation
+300: DP 
 ## Notes
 SQL: 262
