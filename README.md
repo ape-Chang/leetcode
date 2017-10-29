@@ -20,12 +20,9 @@ Id  | Thoughts | Done
 659 |
 678 |
 201 | Bit Operation | &#x2713;
-## Tags
-
-513: BFS
-491: DP
-646: Graph, DAG, longest path
-494: knapsack problem
-287: linked list, fast slow pointer.
-289: simulation
-300: DP 
+513 | BFS | &#x2713;
+491 | DP | &#x2713;
+646 | DP, DAG, Topology Sort | &#x2713;
+287 | Linked List, fast slow pointer | &#x2713;
+289 | Simulation | &#x2713;
+300 | DP | &#x2713;
