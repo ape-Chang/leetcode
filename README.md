@@ -5,11 +5,22 @@ Besides the solution, I also add some extra flavor, mostly the implementation of
 ## Todo List
 Id  | Thoughts | Done
 --- | ------- | --
+175 | SQL
+177 | SQL
+178 | SQL
+182 | SQL
+196 | Shell
+196 | SQL
+197 | SQL
+262 | SQL
 215 | Partition
 207 | Topology sort
 210 | Topology sort
+224 | AST construction and evaluation
+227 | AST construction and evaluation
 297 | Parse
 295 | 
+349 | 
 233 |
 494 | Knapsack
 486 | Math
