@@ -15,8 +15,6 @@ Id  | Thoughts | Done
 262 | SQL
 595 | SQL
 215 | Partition
-207 | Topology sort
-210 | Topology sort
 224 | AST construction and evaluation
 227 | AST construction and evaluation
 297 | Parse
@@ -31,4 +29,3 @@ Id  | Thoughts | Done
 621 | 
 659 |
 678 |
-599 | 
