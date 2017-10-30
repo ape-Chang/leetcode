@@ -151,5 +151,13 @@ public class Parsers {
 		}
 
 	}
+	
+	public static String print(TreeNode root) {
+		if (root == null) {
+			return "()";
+		}
+
+		return String.format("(%s, %s, %s)", root.val, print(root.left), print(root.right));
+	}
 
 }

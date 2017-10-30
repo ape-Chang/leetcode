@@ -12,7 +12,7 @@ public class TreeNode {
 	
 	@Override
 	public String toString() {
-		return print(this);
+		return Parsers.print(this);
 	}
 	
 	@Override
@@ -29,14 +29,6 @@ public class TreeNode {
 		}
 		
 		return false;
-	}
-	
-	String print(TreeNode root) {
-		if (root == null) {
-			return "()";
-		}
-
-		return String.format("(%s, %s, %s)", root.val, print(root.left), print(root.right));
 	}
 
 }

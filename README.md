@@ -17,7 +17,6 @@ Id  | Thoughts | Done
 215 | Partition
 224 | AST construction and evaluation
 227 | AST construction and evaluation
-297 | Parse
 295 | 
 349 | 
 233 |
