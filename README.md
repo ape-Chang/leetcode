@@ -14,11 +14,9 @@ Id  | Thoughts | Done
 197 | SQL
 262 | SQL
 595 | SQL
-215 | Partition
 224 | AST construction and evaluation
 227 | AST construction and evaluation
 295 | 
-349 | 
 233 |
 494 | Knapsack
 486 | Math
