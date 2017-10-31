@@ -14,7 +14,6 @@ Id  | Thoughts | Done
 197 | SQL
 262 | SQL
 595 | SQL
-215 | Partition
 224 | AST construction and evaluation
 227 | AST construction and evaluation
 295 | 
@@ -28,3 +27,5 @@ Id  | Thoughts | Done
 621 | 
 659 |
 678 |
+677 | Trie
+640 | 
