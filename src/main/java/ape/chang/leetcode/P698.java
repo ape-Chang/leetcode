@@ -11,12 +11,24 @@ public class P698 {
 	
 	@Test
 	public void test() {
-		assertThat(solution.canPartitionKSubsets(new int[] {4, 3, 2, 3, 5, 2, 1}, 4), equalTo(true));
+		assertThat(solution.canPartitionKSubsets(new int[] {4,3,2,3,5,2,1}, 4), equalTo(true));
+		assertThat(solution.canPartitionKSubsets(new int[] {2,2,2,2,3,4,5}, 4), equalTo(false));
 	}
 	
 	class Solution {
-	    public boolean canPartitionKSubsets(int[] nums, int k) {
-	        return false;
+	    public boolean canPartitionKSubsets(int[] a, int k) {
+	    	int s = 0, m = 0;
+	    	for (int i : a) {
+	    		s += i;
+	    		m = Math.max(m, i);
+	    	}
+	    	if (s % k != 0) {
+	    		return false;
+	    	}
+	    	if (m > s/k) {
+	    		return false;
+	    	}
+	        return true;
 	    }
 	}
 }
