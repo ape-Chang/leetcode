@@ -26,3 +26,5 @@ Id  | Thoughts | Done
 621 | 
 659 |
 678 |
+677 | Trie
+640 | 
