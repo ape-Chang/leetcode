@@ -17,7 +17,6 @@ Id  | Thoughts | Done
 224 | AST construction and evaluation
 227 | AST construction and evaluation
 295 | 
-349 | 
 233 |
 494 | Knapsack
 486 | Math
@@ -27,5 +26,5 @@ Id  | Thoughts | Done
 621 | 
 659 |
 678 |
-677 | Trie
-640 | 
+553 | 
+498 | 
