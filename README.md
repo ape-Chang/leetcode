@@ -25,6 +25,6 @@ Id  | Thoughts | Done
 698 | Bin packing
 621 | 
 659 |
+676 | Trie
 678 |
-677 | Trie
 640 | 
