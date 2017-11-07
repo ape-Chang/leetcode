@@ -28,3 +28,5 @@ Id  | Thoughts | Done
 678 |
 553 | 
 380 | 
+382 | Reservoir Sampling
+386 | 
