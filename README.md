@@ -30,3 +30,9 @@ Id  | Thoughts | Done
 380 | 
 382 | Reservoir Sampling
 386 | 
+451 |
+456 | 
+450 |
+449 |
+454 |
+442 |
