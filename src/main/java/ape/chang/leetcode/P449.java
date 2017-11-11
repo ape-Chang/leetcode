@@ -2,9 +2,18 @@ package ape.chang.leetcode;
 
 public class P449 {
 	
-	class Solution {
-	    public TreeNode deleteNode(TreeNode root, int key) {
-	        
+	// The same as P297
+	
+	public class Codec {
+
+	    // Encodes a tree to a single string.
+	    public String serialize(TreeNode root) {
+	        return null;
+	    }
+
+	    // Decodes your encoded data to tree.
+	    public TreeNode deserialize(String data) {
+	        return null;
 	    }
 	}
 
