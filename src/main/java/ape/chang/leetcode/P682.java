@@ -1,4 +1,4 @@
-package ape.chang;
+package ape.chang.leetcode;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
