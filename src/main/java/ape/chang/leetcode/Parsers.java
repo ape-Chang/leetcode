@@ -100,8 +100,9 @@ public class Parsers {
 				case '7':
 				case '8':
 				case '9':
+				case '-':
 					int q = p;
-					for (; p < program.length() && Character.isDigit(c); c = program.charAt(++p)) {
+					for (; p < program.length() && (Character.isDigit(c) || c == '-'); c = program.charAt(++p)) {
 
 					}
 					token = new Token(Type.KEY, program.substring(q, p));
