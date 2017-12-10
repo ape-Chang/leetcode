@@ -1,4 +1,4 @@
-package ape.chang.misc;
+package ape.chang.primitives;
 
 public class Util {
 	

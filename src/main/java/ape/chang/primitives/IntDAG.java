@@ -1,7 +1,5 @@
 package ape.chang.primitives;
 
-import ape.chang.misc.Util;
-
 public class IntDAG {
 	// 
 	class Node {
