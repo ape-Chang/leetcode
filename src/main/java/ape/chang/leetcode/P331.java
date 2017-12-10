@@ -14,39 +14,47 @@ public class P331 {
 	@Test
 	public void test() {
 		assertThat(solution.isValidSerialization("9,3,4,#,#,1,#,#,2,#,6,#,#"), equalTo(true));
+		assertThat(solution.isValidSerialization("1,#"), equalTo(false));
+		assertThat(solution.isValidSerialization("9,#,#,1"), equalTo(false));
+		assertThat(solution.isValidSerialization("#,#"), equalTo(false));
+		assertThat(solution.isValidSerialization("9,#,93,#,9,9,#,#,#"), equalTo(true));
+		assertThat(solution.isValidSerialization("9,9,91,#,#,9,#,49,#,#,#"), equalTo(true));
 	}
 	
 	class Solution {
 	    public boolean isValidSerialization(String preorder) {
-	    	String[] nodes = preorder.split(",");
-	    	Stack<String> stack = new Stack<>();
-	    	for (String node : nodes) {
-	    		stack.push(node);
+	    	if ("#".equals(preorder)) {
+	    		return true;
 	    	}
 	    	
-	    	while (!stack.isEmpty()) {
-	    		String right = stack.pop();
-	    		if (stack.isEmpty()) {
-	    			return false;
-	    		}
-	    		String left = stack.pop();
-	    		if (stack.isEmpty()) {
-	    			return false;
-	    		}
-	    		String value = stack.pop();
-	    		if ("#".equals(right) && "#".equals(left)) {
-	    			try {
-	    				Integer.parseInt(value);
-	    				stack.push("#");
-	    			} catch (Exception e) {
-	    				return false;
-	    			}
-	    		} else {
-	    			return false;
+	    	Stack<String> deque = new Stack<>();
+	    	for (String s : preorder.split(",")) {
+	    		deque.push(s);
+	    		
+	    		if ("#".equals(s)) {
+	    			while (deque.size() >= 3) {
+	    	    		String r = deque.pop();
+	    	    		String t = deque.pop();
+	    	    		String p = deque.pop();
+	    	    		if (("#".equals(r) || "$".equals(r)) &&
+	    	    				("#".equals(t) || "$".equals(t))) {
+	    	    			if ((Character.isDigit(p.charAt(0)))) {	    				
+	    	    				deque.push("$");
+	    	    			} else {
+	    	    				return false;
+	    	    			}
+	    	    		} else {
+	    	    			deque.push(p);
+	    	    			deque.push(t);
+	    	    			deque.push(s);
+	    	    			break;
+	    	    		}
+	    	    	}
 	    		}
 	    	}
-	    	return true;
+	    	return deque.size() == 1 && deque.pop().equals("$");
 	    }
+	    
 	}
 
 }
