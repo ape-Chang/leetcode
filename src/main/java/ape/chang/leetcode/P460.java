@@ -3,7 +3,7 @@ package ape.chang.leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Q406 {
+public class P460 {
 	
 	class LFUCache {
 		

@@ -5,7 +5,7 @@ import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 
-public class P60 {
+public class P060 {
 	
 	@Test
 	public void test() {
